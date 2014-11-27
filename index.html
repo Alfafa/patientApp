@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+       <meta charset="UTF-8">
+      <link   rel="stylesheet" type="text/css" href='http://50.63.128.135/~csashesi/class2015/alfred-gaglo/MidSem/jquery.mobile-1.4.4.min.css'/>
+      <script src="http://50.63.128.135/~csashesi/class2015/alfred-gaglo/MidSem/jquery-1.11.1.min.js"></script>
+      <script src="http://50.63.128.135/~csashesi/class2015/alfred-gaglo/MidSem/jquery.mobile-1.4.4.min.js"></script>
+      <script src="phonegap.js"></script>
+      
+
+<script>
+function syncAjax(m){
+      console.log(m);
+        var obj=$.ajax(
+          {url:m,
+           async:false
+           }
+        );
+        console.log(obj.responseText);
+        return $.parseJSON(obj.responseText);
+        
+      }
+
+
+
+
+
+
+      $(document).ready(function(){
+
+
+        
+         $("#view").click(function(){
+
+      var n = "patient_command.php?cmd=5";
+          t = syncAjax(n);
+
+      for(var i=0; i < t.reminderList.length; i++){
+        var th =  t.reminderList[i].Task +" " +t.reserveList[i].ReminderTime + " " + t.reserveList[i].ReminderDate+" " + t.reserveList[i].Body;
+       
+
+        $('<p>' + th + '</p>').appendTo($('#sth'));
+
+      }
+
+
+    });
+
+
+
+
+          });
+
+
+</script>
+
+
+
+
+
+
+
+     
+  </head>
+
+
+<body>
+ 
+	<div data-role="page" id="pageone" data-theme="b">
+	<div data-role="header"><h1>Patient Records</h1>
+
+
+
+
+  <div data-role="navbar">
+    <ul>
+       <li><a href="#"  data-icon="home" class="ui-btn-active ui-state-persist" data-iconpos="notext">Home</a></li>
+       
+       <li><a href="#" data-transition="slide" data-icon="arrow-r">Book Appointments</a></li>
+       
+       
+
+    </ul>
+	      </div>
+	  </div>
+
+
+
+
+
+            <br></br>
+   <br></br>
+   <br></br>
+   <br></br>
+   <br></br>
+
+	      <div role="main" class="ui-content">
+	        
+	       <div data-role="content">
+	              <ul data-role="listview" data-inset="true">
+	                  <li>
+	                <a href="http://50.63.128.135/~csashesi/class2015/alfred-gaglo/MidSem/appointM.html">APPOINTMENT WITH DOCTOR</a>
+	            </li>
+	           
+              <li>
+                  <a href="http://50.63.128.135/~csashesi/class2015/alfred-gaglo/MidSem/reminder.html">SET REMINDERS</a>
+              </li>
+              <li>
+                <button id="view">Click</button>
+                  <!-- <div data-role="collapsiple-set"> -->
+                    <div data-role="collapsible" >
+                    <h1>VIEW REMINDER</h1>
+                    <p id="sth"></p>
+                  </div>
+
+              </li>
+
+
+	        </ul>
+
+		               </div>
+	               <br></br>
+   <br></br>
+   <br></br>
+   <br></br>
+   <br></br>
+   <br></br>
+   <br></br>
+   <br></br>
+
+
+
+	               <div data-role="footer">
+	                  <div  align="center">
+	                    <h3> Developed By ALFRED KOFI GAGLO</h3>
+	                      </div>
+	                  </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+</html>
